@@ -4,6 +4,8 @@
 #include "Car.h"
 #include "Bus.h"
 #include "Motorbike.h"
+#include <chrono> // For std::chrono::seconds
+#include <thread> // For std::this_thread::sleep_for
 
 int main()
 {
@@ -25,6 +27,11 @@ int main()
         Motorbike *motorbike = new Motorbike(i + 9);
         parkingLot.parkVehicle(motorbike);
     }
+
+    // Wait for some time to simulate parking
+    // Note: For demonstration purposes, we'll simulate a delay here.
+    // In real-world applications, you would not have this kind of simulation.
+    std::this_thread::sleep_for(std::chrono::seconds(20));
 
     int overstayingCount = parkingLot.countOverstayingVehicles(15); // 15 seconds
     std::cout << "Number of vehicles overstaying: " << overstayingCount << std::endl;
